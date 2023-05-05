@@ -1,9 +1,11 @@
 import 'package:cat_trivia/di/providers.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/widget/random_fact_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  initializeDateFormatting();
   runApp(const MyApp());
 }
 

@@ -6,10 +6,11 @@ abstract class RandomFactState {}
 class RandomFactInitial extends RandomFactState {}
 
 class RandomFactLoaded extends RandomFactState {
-  final Fact randomFact;
-
   RandomFactLoaded({
-    required this.randomFact,
+    required this.randomFactText,
+    required this.randomFactDate,
   });
-}
 
+  final String randomFactText;
+  final String randomFactDate;
+}
