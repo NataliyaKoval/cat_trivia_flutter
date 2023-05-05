@@ -13,4 +13,5 @@ class RandomFactLoaded extends RandomFactState {
 
   final String randomFactText;
   final String randomFactDate;
+
 }
