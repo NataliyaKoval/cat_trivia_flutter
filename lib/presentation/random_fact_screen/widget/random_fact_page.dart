@@ -18,19 +18,28 @@ class RandomFactPage extends StatelessWidget {
       )..getRandomFact(),
       child: Scaffold(
         appBar: AppBar(),
-        body: Center(
-          child: BlocBuilder<RandomFactCubit, RandomFactState>(
-            builder: (BuildContext context, RandomFactState state) {
-              if (state is RandomFactLoaded) {
-                return CatCard(
-                  text: state.randomFactText,
-                  date: state.randomFactDate,
-                );
-              } else {
-                return const CircularProgressIndicator();
-              }
-            },
-          ),
+        body: BlocBuilder<RandomFactCubit, RandomFactState>(
+          builder: (BuildContext context, RandomFactState state) {
+            if (state is RandomFactLoaded) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CatCard(
+                    text: state.randomFactText,
+                    date: state.randomFactDate,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<RandomFactCubit>().getRandomFact();
+                    },
+                    child: const Text('Another fact!'),
+                  ),
+                ],
+              );
+            } else {
+              return const CircularProgressIndicator();
+            }
+          },
         ),
       ),
     );
