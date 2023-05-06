@@ -1,4 +1,5 @@
 import 'package:cat_trivia/domain/repository/repository.dart';
+import 'package:cat_trivia/presentation/fact_history_screen/widget/fact_history_page.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/bloc/random_fact_cubit.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/usecase/get_random_fact_usecase.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/widget/cat_card.dart';
@@ -33,6 +34,17 @@ class RandomFactPage extends StatelessWidget {
                       context.read<RandomFactCubit>().getRandomFact();
                     },
                     child: const Text('Another fact!'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FactHistoryPage(),
+                        ),
+                      );
+                    },
+                    child: const Text('Fact history'),
                   ),
                 ],
               );
