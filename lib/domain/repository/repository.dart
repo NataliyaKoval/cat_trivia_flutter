@@ -1,5 +1,10 @@
+import 'package:cat_trivia/data/entity/fact_entity.dart';
 import 'package:cat_trivia/domain/models/fact.dart';
 
 abstract class Repository {
-  Future<Fact> getRandomFact();
+  Future<Fact> getAndSaveRandomFact();
+
+  void saveRandomFact(FactEntity fact);
+
+  List<Fact>? getSavedFacts();
 }

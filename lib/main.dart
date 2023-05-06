@@ -1,10 +1,15 @@
+import 'package:cat_trivia/data/entity/fact_entity.dart';
 import 'package:cat_trivia/di/providers.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/widget/random_fact_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter<FactEntity>(FactEntityAdapter());
+  Box factsBox = await Hive.openBox<FactEntity>('facts');
   initializeDateFormatting();
   runApp(const MyApp());
 }

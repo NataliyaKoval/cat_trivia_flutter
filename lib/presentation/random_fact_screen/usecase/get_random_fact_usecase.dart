@@ -11,6 +11,6 @@ class GetRandomFactUsecase extends NoParamsUseCase<Fact> {
 
   @override
   Future<Fact> call() async {
-    return await repository.getRandomFact();
+    return await repository.getAndSaveRandomFact();
   }
 }
