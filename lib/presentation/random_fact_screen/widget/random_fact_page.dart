@@ -22,31 +22,49 @@ class RandomFactPage extends StatelessWidget {
         body: BlocBuilder<RandomFactCubit, RandomFactState>(
           builder: (BuildContext context, RandomFactState state) {
             if (state is RandomFactLoaded) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CatCard(
-                    text: state.randomFactText,
-                    date: state.randomFactDate,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.read<RandomFactCubit>().getRandomFact();
-                    },
-                    child: const Text('Another fact!'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const FactHistoryPage(),
-                        ),
-                      );
-                    },
-                    child: const Text('Fact history'),
-                  ),
-                ],
+              return Padding(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: CatCard(
+                        text: state.randomFactText,
+                        date: state.randomFactDate,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.read<RandomFactCubit>().getRandomFact();
+                        },
+                        child: const Text('Another fact!'),
+                      ),
+                    ),
+                    const SizedBox(height: 30,),
+                    SizedBox(
+                      height: 50,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FactHistoryPage(),
+                            ),
+                          );
+                        },
+                        child: const Text('Fact history'),
+                      ),
+                    ),
+                  ],
+                ),
               );
             } else {
               return const CircularProgressIndicator();
