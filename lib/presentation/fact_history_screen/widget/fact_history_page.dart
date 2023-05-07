@@ -21,7 +21,16 @@ class FactHistoryPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(Strings.factHistoryPageStrings.pageName),
         ),
-        body: BlocBuilder<FactHistoryCubit, FactHistoryState>(
+        body: BlocConsumer<FactHistoryCubit, FactHistoryState>(
+          listener: (context, state) {
+            if (state is FactHistoryError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.errorMessage),
+                ),
+              );
+            }
+          },
           builder: (context, state) {
             if (state is FactHistoryLoaded && state.savedFacts != null) {
               return ListView.separated(

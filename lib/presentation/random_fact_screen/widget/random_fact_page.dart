@@ -62,7 +62,12 @@ class RandomFactPage extends StatelessWidget {
                       onPressed: () {
                         context.read<RandomFactCubit>().getRandomFact();
                       },
-                      child: Text(Strings.randomFactPageStrings.newFactButton),
+                      child: Text(
+                        Strings.randomFactPageStrings.newFactButton,
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -80,7 +85,12 @@ class RandomFactPage extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Text(Strings.randomFactPageStrings.historyButton),
+                      child: Text(
+                        Strings.randomFactPageStrings.historyButton,
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
                   ),
                 ],

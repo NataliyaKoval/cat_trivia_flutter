@@ -12,3 +12,11 @@ class FactHistoryLoaded extends FactHistoryState {
 
   final List<Fact>? savedFacts;
 }
+
+class FactHistoryError extends FactHistoryState {
+  FactHistoryError({
+    required this.errorMessage,
+  });
+
+  final String errorMessage;
+}
