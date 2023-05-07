@@ -1,3 +1,4 @@
+import 'package:cat_trivia/consts/strings.dart';
 import 'package:cat_trivia/data/entity/fact_entity.dart';
 import 'package:cat_trivia/di/providers.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/widget/random_fact_page.dart';
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       child: Builder(
         builder: (context) {
           return MaterialApp(
-            title: 'Cat Trivia',
+            title: Strings.appStrings.appName,
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),

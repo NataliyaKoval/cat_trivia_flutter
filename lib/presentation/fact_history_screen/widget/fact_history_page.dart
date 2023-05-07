@@ -1,3 +1,4 @@
+import 'package:cat_trivia/consts/strings.dart';
 import 'package:cat_trivia/domain/repository/repository.dart';
 import 'package:cat_trivia/presentation/fact_history_screen/bloc/fact_history_cubit.dart';
 import 'package:cat_trivia/presentation/fact_history_screen/usecase/get_fact_history_usecase.dart';
@@ -17,7 +18,9 @@ class FactHistoryPage extends StatelessWidget {
         ),
       )..getSavedFacts(),
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text(Strings.factHistoryPageStrings.pageName),
+        ),
         body: BlocBuilder<FactHistoryCubit, FactHistoryState>(
           builder: (context, state) {
             if (state is FactHistoryLoaded && state.savedFacts != null) {
