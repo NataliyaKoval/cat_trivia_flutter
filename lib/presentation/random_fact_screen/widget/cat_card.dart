@@ -18,7 +18,6 @@ class CatCard extends StatelessWidget {
             const CircularProgressIndicator(),
             Image.network(
               'https://cataas.com/cat?t=${DateTime.now().millisecond}',
-              width: 200,
               height: 300,
               fit: BoxFit.contain,
             ),

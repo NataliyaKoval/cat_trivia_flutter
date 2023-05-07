@@ -2,7 +2,7 @@ import 'package:cat_trivia/consts/strings.dart';
 import 'package:cat_trivia/domain/repository/repository.dart';
 import 'package:cat_trivia/presentation/fact_history_screen/widget/fact_history_page.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/bloc/random_fact_cubit.dart';
-import 'package:cat_trivia/presentation/random_fact_screen/usecase/get_random_fact_usecase.dart';
+import 'package:cat_trivia/presentation/random_fact_screen/use_case/get_random_fact_use_case.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/widget/cat_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +14,7 @@ class RandomFactPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<RandomFactCubit>(
       create: (context) => RandomFactCubit(
-        getRandomFactUsecase: GetRandomFactUsecase(
+        getRandomFactUseCase: GetRandomFactUseCase(
           repository: context.read<Repository>(),
         ),
       )..getRandomFact(),
@@ -88,6 +88,7 @@ class RandomFactPage extends StatelessWidget {
                       child: Text(
                         Strings.randomFactPageStrings.historyButton,
                         style: const TextStyle(
+                          //TODO
                           fontSize: 20,
                         ),
                       ),

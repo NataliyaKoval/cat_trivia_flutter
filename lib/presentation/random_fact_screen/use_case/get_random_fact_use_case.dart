@@ -1,9 +1,9 @@
 import 'package:cat_trivia/domain/models/fact.dart';
 import 'package:cat_trivia/domain/repository/repository.dart';
-import 'package:cat_trivia/domain/usecase/usecase.dart';
+import 'package:cat_trivia/domain/use_case/use_case.dart';
 
-class GetRandomFactUsecase extends NoParamsUseCase<Fact> {
-  GetRandomFactUsecase({
+class GetRandomFactUseCase extends NoParamsUseCase<Fact> {
+  GetRandomFactUseCase({
     required this.repository,
   });
 

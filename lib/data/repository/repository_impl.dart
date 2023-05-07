@@ -22,7 +22,7 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  List<Fact>? getSavedFacts() {
+  List<Fact> getSavedFacts() {
     return localDatabase.getSavedFacts();
   }
 }

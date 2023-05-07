@@ -16,11 +16,12 @@ class FactTextAndDate extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 20),
+          RichText(
+            maxLines: 7,
+            overflow: TextOverflow.ellipsis,
+            text: TextSpan(
+              text: text,
+              style: const TextStyle(fontSize: 22, color: Colors.black),
             ),
           ),
           const SizedBox(height: 10),

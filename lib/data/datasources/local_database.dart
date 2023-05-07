@@ -8,7 +8,7 @@ class LocalDatabase {
     factsBox.add(fact);
   }
 
-  List<FactEntity>? getSavedFacts() {
+  List<FactEntity> getSavedFacts() {
     return factsBox.values.toList();
   }
 }

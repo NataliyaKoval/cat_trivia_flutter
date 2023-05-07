@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<FactEntity>(FactEntityAdapter());
-  Box factsBox = await Hive.openBox<FactEntity>('facts');
+  await Hive.openBox<FactEntity>('facts');
   initializeDateFormatting();
   runApp(const MyApp());
 }

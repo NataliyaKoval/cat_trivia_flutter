@@ -7,10 +7,10 @@ class FactHistoryInitial extends FactHistoryState {}
 
 class FactHistoryLoaded extends FactHistoryState {
   FactHistoryLoaded({
-    this.savedFacts,
+    required this.savedFacts,
   });
 
-  final List<Fact>? savedFacts;
+  final List<Fact> savedFacts;
 }
 
 class FactHistoryError extends FactHistoryState {
