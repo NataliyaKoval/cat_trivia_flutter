@@ -12,11 +12,17 @@ class CatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.network(
-          'https://cataas.com/cat',
-          width: 200,
-          height: 300,
-          fit: BoxFit.contain,
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            const CircularProgressIndicator(),
+            Image.network(
+              'https://cataas.com/cat?t=${DateTime.now().millisecond}',
+              width: 200,
+              height: 300,
+              fit: BoxFit.contain,
+            ),
+          ],
         ),
         const SizedBox(height: 10),
         FactTextAndDate(
