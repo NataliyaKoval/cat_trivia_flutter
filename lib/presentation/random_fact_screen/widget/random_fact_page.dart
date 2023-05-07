@@ -19,7 +19,16 @@ class RandomFactPage extends StatelessWidget {
       )..getRandomFact(),
       child: Scaffold(
         appBar: AppBar(),
-        body: BlocBuilder<RandomFactCubit, RandomFactState>(
+        body: BlocConsumer<RandomFactCubit, RandomFactState>(
+          listener: (BuildContext context, RandomFactState state) {
+            if (state is RandomFactError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.errorMessage),
+                ),
+              );
+            }
+          },
           builder: (BuildContext context, RandomFactState state) {
             if (state is RandomFactLoaded) {
               return Padding(
@@ -47,7 +56,9 @@ class RandomFactPage extends StatelessWidget {
                         child: const Text('Another fact!'),
                       ),
                     ),
-                    const SizedBox(height: 30,),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     SizedBox(
                       height: 50,
                       width: double.infinity,

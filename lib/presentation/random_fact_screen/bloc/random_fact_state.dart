@@ -13,5 +13,12 @@ class RandomFactLoaded extends RandomFactState {
 
   final String randomFactText;
   final String randomFactDate;
+}
 
+class RandomFactError extends RandomFactState {
+  RandomFactError({
+    required this.errorMessage,
+  });
+
+  final String errorMessage;
 }
