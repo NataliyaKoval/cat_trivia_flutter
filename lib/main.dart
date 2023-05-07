@@ -4,11 +4,14 @@ import 'package:cat_trivia/di/providers.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/widget/random_fact_page.dart';
 import 'package:cat_trivia/themes/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Hive.initFlutter();
   Hive.registerAdapter<FactEntity>(FactEntityAdapter());
   await Hive.openBox<FactEntity>('facts');
