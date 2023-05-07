@@ -2,6 +2,7 @@ import 'package:cat_trivia/consts/strings.dart';
 import 'package:cat_trivia/data/entity/fact_entity.dart';
 import 'package:cat_trivia/di/providers.dart';
 import 'package:cat_trivia/presentation/random_fact_screen/widget/random_fact_page.dart';
+import 'package:cat_trivia/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -39,9 +40,7 @@ class _MyAppState extends State<MyApp> {
         builder: (context) {
           return MaterialApp(
             title: Strings.appStrings.appName,
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
+            theme: context.read<AppTheme>().lightTheme,
             home: const RandomFactPage(),
           );
         },

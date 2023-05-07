@@ -50,48 +50,34 @@ class RandomFactPage extends StatelessWidget {
                           );
                         } else {
                           return const Center(
-                              child: CircularProgressIndicator());
+                            child: CircularProgressIndicator(),
+                          );
                         }
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: 50,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        context.read<RandomFactCubit>().getRandomFact();
-                      },
-                      child: Text(
-                        Strings.randomFactPageStrings.newFactButton,
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<RandomFactCubit>().getRandomFact();
+                    },
+                    child: Text(
+                      Strings.randomFactPageStrings.newFactButton,
                     ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  SizedBox(
-                    height: 50,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const FactHistoryPage(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        Strings.randomFactPageStrings.historyButton,
-                        style: const TextStyle(
-                          //TODO
-                          fontSize: 20,
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FactHistoryPage(),
                         ),
-                      ),
+                      );
+                    },
+                    child: Text(
+                      Strings.randomFactPageStrings.historyButton,
                     ),
                   ),
                 ],
