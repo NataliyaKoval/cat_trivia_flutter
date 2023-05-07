@@ -12,38 +12,48 @@ class RandomFactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RandomFactCubit>(
-      create: (context) => RandomFactCubit(
+      create: (context) =>
+      RandomFactCubit(
         getRandomFactUsecase: GetRandomFactUsecase(
           repository: context.read<Repository>(),
         ),
-      )..getRandomFact(),
-      child: Scaffold(
-        appBar: AppBar(),
-        body: BlocConsumer<RandomFactCubit, RandomFactState>(
-          listener: (BuildContext context, RandomFactState state) {
-            if (state is RandomFactError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.errorMessage),
-                ),
-              );
-            }
-          },
-          builder: (BuildContext context, RandomFactState state) {
-            if (state is RandomFactLoaded) {
-              return Padding(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                  bottom: 20,
-                  left: 20,
-                  right: 20,
-                ),
-                child: Column(
+      )
+        ..getRandomFact(),
+      child: BlocListener<RandomFactCubit, RandomFactState>(
+        listener: (BuildContext context, RandomFactState state) {
+          if (state is RandomFactError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+              ),
+            );
+          }
+        },
+        child: Scaffold(
+          appBar: AppBar(),
+          body: Padding(
+            padding: const EdgeInsets.only(
+              top: 10,
+              bottom: 20,
+              left: 20,
+              right: 20,
+            ),
+            child: Builder(
+              builder: (context) {
+                return Column(
                   children: [
                     Expanded(
-                      child: CatCard(
-                        text: state.randomFactText,
-                        date: state.randomFactDate,
+                      child: BlocBuilder<RandomFactCubit, RandomFactState>(
+                        builder: (BuildContext context, RandomFactState state) {
+                          if (state is RandomFactLoaded) {
+                            return CatCard(
+                              text: state.randomFactText,
+                              date: state.randomFactDate,
+                            );
+                          } else {
+                            return const Center(child: CircularProgressIndicator());
+                          }
+                        },
                       ),
                     ),
                     SizedBox(
@@ -75,12 +85,10 @@ class RandomFactPage extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          },
+                );
+              }
+            ),
+          ),
         ),
       ),
     );
